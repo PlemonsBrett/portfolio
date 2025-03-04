@@ -911,3 +911,59 @@ const DualVirtualizedLists = () => {
 
 export default DualVirtualizedLists;
 ```
+
+Okay, now lets re-organize into components to that it is far easier to deal with.
+
+Component Structure Overview
+
+Here's the overall structure of the components:
+
+```
+1. Page (Top-level component)
+   │
+   ├── PageHeader
+   │   - Displays title, instructions, and debug info
+   │
+   ├── CompactListContainer (Container A)
+   │   │
+   │   └── CompactListItem (Multiple)
+   │       - Simple items with minimal information
+   │
+   └── ExpandedListContainer (Container B)
+       │
+       └── ExpandedListItem (Multiple)
+           │
+           ├── ItemHeader
+           │   - Displays item title and ID
+           │
+           ├── ImageGrid
+           │   │
+           │   └── LazyImage (Multiple)
+           │       - Handles lazy loading of images
+           │
+           └── SubItems
+               - Displays sub-items of the expanded item
+```
+
+**File Structure:**
+
+- `types.ts` - Contains all TypeScript interfaces
+- `Page.tsx` - Main component that orchestrates everything
+- `PageHeader.tsx` - Header component with instructions and debug info
+- `CompactListContainer.tsx` - Container A implementation
+- `CompactListItem.tsx` - Individual items for Container A
+- `ExpandedListContainer.tsx` - Container B implementation
+- `ExpandedListItem.tsx` - Expanded item view for Container B
+- `ItemHeader.tsx` - Header for expanded items
+- `ImageGrid.tsx` - Grid display for images
+- `LazyImage.tsx` - Image component with lazy loading capability
+- `SubItems.tsx` - Component to display sub-items
+
+**Key Features:**
+
+1. Virtualized rendering for performance
+2. Synchronized scrolling between containers
+3. Lazy loading of images
+4. Modular, reusable components
+5. TypeScript typing for all components
+6. Clean separation of concerns
