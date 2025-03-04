@@ -967,3 +967,39 @@ Here's the overall structure of the components:
 4. Modular, reusable components
 5. TypeScript typing for all components
 6. Clean separation of concerns
+
+**Component Hierarchy**
+
+1. **Page** - The main container that manages state and orchestrates component interaction
+2. **PageHeader** - Displays the title, instructions, and debug information
+3. **Container A:** CompactListContainer & CompactListItem - The simpler left side list
+4. **Container B:** ExpandedListContainer & ExpandedListItem - The more complex right side list
+5. **Supporting Components:**
+  - **ItemHeader** - Header for expanded items
+  - **ImageGrid** - 2x5 grid of images with lazy loading
+  - **LazyImage** - Handles image loading with spinner and error states
+  - **SubItems** - Displays the sub-items section
+
+**Key Improvements**
+
+1. **Better Separation of Concerns:**
+  - Each component now has a single responsibility
+  - State management is centralized in the parent component
+  - Props are properly typed with TypeScript interfaces
+2. **More Maintainable Code:**
+  - Smaller, focused components that are easier to understand
+  - Clear prop interfaces between components
+  - Easier to modify or replace individual parts
+3. **Reusability:**
+  - Components like LazyImage and ImageGrid can be used elsewhere
+  - The virtualization logic is encapsulated in the container components
+
+**Implementation Notes**
+
+1. The Page component manages the shared state and synchronization flags
+2. Each container component handles its own virtualization
+3. The LazyImage component includes an option to use NextImage with HeroUI
+4. Image loading is handled with a simple "load once, stay loaded" approach
+5. Proper TypeScript interfaces ensure type safety across components
+
+To use this in your project, you would import these components and organize them in your file structure. You can also further customize components like LazyImage to integrate with your UI library.
